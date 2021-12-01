@@ -2,9 +2,7 @@
   <div id="app">
     <!-- 路由出口 -->
     <!-- 路由匹配到的组件将渲染在这里 -->
-    <!-- <router-view></router-view> -->
-    <a-button type="primary"> Primary </a-button>
-    hahahah
+    <router-view></router-view>
   </div>
 </template>
 
