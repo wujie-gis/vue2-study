@@ -15,6 +15,7 @@ const constantRouterMap = [
     path: '/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "login" */ '@/views/login/Login'),
+    // component: Login,
   },
   {
     path: '/',
