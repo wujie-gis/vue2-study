@@ -2,25 +2,27 @@ const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
 const HotHashWebpackPlugin = require('hot-hash-webpack-plugin');
 const WebpackBar = require('webpackbar');
-
-function resolve(dir) {
-  return path.join(__dirname, dir);
-}
+const resolve = dir => path.join(__dirname, dir);
+const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV);
 
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? './' : './',
 
-  // 生产打包时不输出map文件，增加打包速度
-  productionSourceMap: false,
-  outputDir: 'dist',
-  assetsDir: 'assets',
+  productionSourceMap: !IS_PROD, // 生产环境的 source map
+  outputDir: process.env.outputDir || 'dist', // 'dist', 生产环境构建文件的目录
+  assetsDir: 'assets', // 相对于outputDir的静态资源(js、css、img、fonts)目录
+  lintOnSave: false, // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码
+  runtimeCompiler: false, // 是否使用包含运行时编译器的 Vue 构建版本
+  parallel: require('os').cpus().length > 1, // 是否为 Babel 或 TypeScript 使用 thread-loader。该选项在系统的 CPU 有多于一个内核时自动启用，仅作用于生产构建。
+  pwa: {}, // 向 PWA 插件传递选项。
 
   chainWebpack: config => {
+    config.resolve.symlinks(true); // 修复热更新失效
     // vue-cli3.X 会自动进行模块分割抽离，如果不需要进行分割,可以手动删除
     // config.optimization.delete('splitChunks');
 
     config.resolve.alias
-      .set('@$', resolve('src'))
+      .set('@', resolve('src'))
       .set('@api', resolve('src/api'))
       .set('@assets', resolve('src/assets'))
       .set('@comp', resolve('src/components'))
@@ -86,10 +88,27 @@ module.exports = {
       });
     }
   },
+  css: {
+    extract: IS_PROD,
+    requireModuleExtension: false, // 去掉文件名中的 .module
+    loaderOptions: {
+      // 给 less-loader 传递 Less.js 相关选项
+      less: {
+        // `globalVars` 定义全局对象，可加入全局变量
+        globalVars: {
+          // primary: '#333',
+        },
+      },
+    },
+  },
 
   devServer: {
     open: true,
     port: 3000,
+    host: 'localhost',
+    https: false, // https:{type:Boolean}
+    hotOnly: true, // 热更新
+
     // proxy: {
     //   '/api': {
     //     target: 'https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro', //mock API接口系统
@@ -101,6 +120,4 @@ module.exports = {
     //   },
     // },
   },
-
-  lintOnSave: undefined,
 };
