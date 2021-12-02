@@ -79,7 +79,7 @@ module.exports = {
             priority: 1,
           },
           vendor: {
-            name: 'libs',
+            name: 'chunk-libs',
             chunks: 'all',
             test: /[\\/]node_modules[\\/]/,
             priority: 10,
@@ -89,16 +89,29 @@ module.exports = {
     }
   },
   css: {
-    extract: IS_PROD,
-    requireModuleExtension: false, // 去掉文件名中的 .module
     loaderOptions: {
-      // 给 less-loader 传递 Less.js 相关选项
+      // 自定义基础样式 因为没有我就注释了
+      // sass: {
+      //     data: `
+      // 		@import "@/assets/style/base.scss";
+      // 	`,
+      // },
+
+      //这只主题样式，修改此文件后需要重新启动，
       less: {
-        // `globalVars` 定义全局对象，可加入全局变量
-        globalVars: {
-          // primary: '#333',
+        lessOptions: {
+          modifyVars: {
+            //这是配置css主题色
+            'primary-color': '#007AFF',
+          },
+          javascriptEnabled: true,
         },
       },
+    },
+    // 每次打包后生成的css携带时间戳
+    extract: {
+      filename: `css/[name].[contenthash:8].css`,
+      chunkFilename: `css/[name].[contenthash:8].css`,
     },
   },
 

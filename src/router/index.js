@@ -1,22 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Dashboard from '../views/dashboard/Dashboard.vue';
-import Login from '../views/login/Login';
+
+import modules from './modules';
 
 Vue.use(Router);
 
-const constantRouterMap = [
-  {
-    path: '/dashboard',
-    name: 'dashboard',
-    component: Dashboard,
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import(/* webpackChunkName: "login" */ '@/views/login/Login'),
-    // component: Login,
-  },
+const routes = [
+  ...modules,
   {
     path: '/',
     redirect: '/dashboard',
@@ -27,5 +17,5 @@ export default new Router({
   mode: 'hash',
   base: process.env.BASE_URL,
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRouterMap,
+  routes,
 });

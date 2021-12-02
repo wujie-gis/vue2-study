@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>dashboard</div>
+    <div class="warp">dashboard</div>
     <a-button type="primary"> Primary </a-button>
     <a-button>Default</a-button>
   </div>
@@ -14,4 +14,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="less" scoped>
+.warp {
+  color: red;
+}
+</style>
