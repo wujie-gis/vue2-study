@@ -1,5 +1,9 @@
 <template>
-  <div>dashboard</div>
+  <div>
+    <div>dashboard</div>
+    <a-button type="primary"> Primary </a-button>
+    <a-button>Default</a-button>
+  </div>
 </template>
 
 <script>

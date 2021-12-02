@@ -6,7 +6,10 @@ function resolve(dir) {
 }
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/production-sub-path/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
+
+  // 生产打包时不输出map文件，增加打包速度
+  productionSourceMap: false, 
 
   chainWebpack: config => {
     config.resolve.alias
@@ -37,6 +40,7 @@ module.exports = {
   },
 
   devServer: {
+    open: true,
     port: 3000,
     // proxy: {
     //   '/api': {
