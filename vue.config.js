@@ -79,7 +79,7 @@ module.exports = {
             priority: 1,
           },
           vendor: {
-            name: 'chunk-libs',
+            name: 'libs',
             chunks: 'all',
             test: /[\\/]node_modules[\\/]/,
             priority: 10,
