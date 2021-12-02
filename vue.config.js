@@ -16,6 +16,11 @@ module.exports = {
       .set('@comp', resolve('src/components'))
       .set('@views', resolve('src/views'));
 
+    config.plugin('html').tap(args => {
+      args[0].title = 'Vue2基础框架集成';
+      return args;
+    });
+
     //生产环境，开启js\css压缩
     if (process.env.NODE_ENV === 'production') {
       config.plugin('compressionPlugin').use(
