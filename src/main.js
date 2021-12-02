@@ -5,11 +5,16 @@ import 'ant-design-vue/dist/antd.css';
 import router from './router';
 import { VueAxios } from '@/utils/request';
 import store from './store';
+import Storage from 'vue-ls';
+import config from '@/defaultSettings';
+import vueBus from '@/utils/vueBus';
 
 Vue.config.productionTip = false;
 
 Vue.use(Antd);
-Vue.use(VueAxios, router);
+Vue.use(VueAxios);
+Vue.use(Storage, config.storageOptions);
+Vue.use(vueBus);
 
 new Vue({
   router,

@@ -6264,6 +6264,11 @@
   dependencies:
     "is-wsl" "^1.1.0"
 
+"opencollective-postinstall@^2.0.2":
+  "integrity" "sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q=="
+  "resolved" "https://registry.npmjs.org/opencollective-postinstall/-/opencollective-postinstall-2.0.3.tgz"
+  "version" "2.0.3"
+
 "opener@^1.5.1":
   "integrity" "sha1-XTfh81B3udysQwE3InGv3rKhNZg="
   "resolved" "https://registry.nlark.com/opener/download/opener-1.5.2.tgz?cache=0&sync_timestamp=1618847055043&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fopener%2Fdownload%2Fopener-1.5.2.tgz"
@@ -8652,6 +8657,13 @@
     "loader-utils" "^1.1.0"
     "vue-hot-reload-api" "^2.3.0"
     "vue-style-loader" "^4.1.0"
+
+"vue-ls@^4.0.0":
+  "integrity" "sha512-zVN3prokwUZVWIjEitBqGO5Hi4fmgE3xdSWFGkY+OC4SMpnaD9EIyMX8tmPU5K1PGsAeBCFuE0RzmrlyD/QE7g=="
+  "resolved" "https://registry.npmjs.org/vue-ls/-/vue-ls-4.0.0.tgz"
+  "version" "4.0.0"
+  dependencies:
+    "opencollective-postinstall" "^2.0.2"
 
 "vue-ref@^2.0.0":
   "integrity" "sha512-uKNKpFOVeWNqS2mrBZqnpLyXJo5Q+vnkex6JvpENvhXHFNBW/SJTP8vJywLuVT3DpxwXcF9N0dyIiZ4/NpTexQ=="
