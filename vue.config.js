@@ -31,5 +31,19 @@ module.exports = {
     config.module.rule('markdown').test(/\.md$/).use().loader('file-loader').end();
   },
 
+  devServer: {
+    port: 3000,
+    // proxy: {
+    //   '/api': {
+    //     target: 'https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro', //mock API接口系统
+    //     ws: false,
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       '/xxx': '', //默认所有请求都加了xxx前缀，需要去掉
+    //     },
+    //   },
+    // },
+  },
+
   lintOnSave: undefined,
 };

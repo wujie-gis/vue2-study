@@ -16,6 +16,10 @@ Vue.use(VueAxios);
 Vue.use(Storage, config.storageOptions);
 Vue.use(vueBus);
 
+//表单验证
+import { rules } from '@/utils/rules';
+Vue.prototype.rules = rules;
+
 new Vue({
   router,
   store,
