@@ -10,6 +10,7 @@ import vueBus from '@/utils/vueBus';
 import Antd, { version } from 'ant-design-vue';
 console.log('ant-design-vue version:', version);
 import 'ant-design-vue/dist/antd.css'; // or 'ant-design-vue/dist/antd.less'
+import '@assets/style/base.less';
 
 Vue.config.productionTip = false;
 

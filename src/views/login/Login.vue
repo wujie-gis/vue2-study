@@ -1,9 +1,15 @@
 <template>
-  <div>login</div>
+  <div class="warp">login</div>
 </template>
 
 <script>
 export default {};
 </script>
 
-<style></style>
+<style lang="less" scoped>
+.warp {
+  color: blueviolet;
+  font-size: 24px;
+  font-weight: bold;
+}
+</style>

@@ -9,7 +9,7 @@ const routes = [
   ...modules,
   {
     path: '/',
-    redirect: '/dashboard',
+    redirect: '/login',
   },
 ];
 

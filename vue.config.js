@@ -17,7 +17,7 @@ module.exports = {
   pwa: {}, // 向 PWA 插件传递选项。
 
   chainWebpack: config => {
-    config.resolve.symlinks(true); // 修复热更新失效
+    // config.resolve.symlinks(true); // 修复热更新失效
     // vue-cli3.X 会自动进行模块分割抽离，如果不需要进行分割,可以手动删除
     // config.optimization.delete('splitChunks');
 
@@ -50,12 +50,7 @@ module.exports = {
 
       config.output.filename('./js/[name].[chunkhash:8].js');
       config.output.chunkFilename('./js/[name].[chunkhash:8].js');
-      config.plugin('extract-css').tap(args => [
-        {
-          filename: 'css/[name].[contenthash:8].css',
-          chunkFilename: 'css/[name].[contenthash:8].css',
-        },
-      ]);
+
       config.plugin('hotHash').use(HotHashWebpackPlugin, [{ version: '1.0.0' }]);
       config.plugin('webpackBar').use(WebpackBar);
 
@@ -87,31 +82,29 @@ module.exports = {
         },
       });
     }
+
+    // config.plugin('extract-css').tap(args => [
+    //   {
+    //     filename: 'css/[name].[contenthash:8].css',
+    //     chunkFilename: 'css/[name].[contenthash:8].css',
+    //   },
+    // ]);
   },
+
   css: {
     loaderOptions: {
       // 自定义基础样式 因为没有我就注释了
-      // sass: {
-      //     data: `
-      // 		@import "@/assets/style/base.scss";
-      // 	`,
-      // },
 
       //这只主题样式，修改此文件后需要重新启动，
       less: {
         lessOptions: {
           modifyVars: {
             //这是配置css主题色
-            'primary-color': '#007AFF',
+            // 'primary-color': '#007AFF',
           },
           javascriptEnabled: true,
         },
       },
-    },
-    // 每次打包后生成的css携带时间戳
-    extract: {
-      filename: `css/[name].[contenthash:8].css`,
-      chunkFilename: `css/[name].[contenthash:8].css`,
     },
   },
 
