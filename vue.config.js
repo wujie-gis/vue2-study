@@ -17,7 +17,7 @@ module.exports = {
   pwa: {}, // 向 PWA 插件传递选项。
 
   chainWebpack: config => {
-    // config.resolve.symlinks(true); // 修复热更新失效
+    config.resolve.symlinks(true); // 修复热更新失效
     // vue-cli3.X 会自动进行模块分割抽离，如果不需要进行分割,可以手动删除
     // config.optimization.delete('splitChunks');
 
@@ -111,9 +111,9 @@ module.exports = {
   devServer: {
     open: true,
     port: 3000,
+    hot: true,
     host: 'localhost',
     https: false, // https:{type:Boolean}
-    hotOnly: true, // 热更新
 
     // proxy: {
     //   '/api': {
